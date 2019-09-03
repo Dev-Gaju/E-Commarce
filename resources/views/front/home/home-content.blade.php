@@ -1,5 +1,6 @@
 @extends('front.master');
 @section('main-content')
+    <h3 class="text-success text-center">{{Session::get('message')}}</h3>
     <div class="index_slider">
         <div class="container">
             <div class="callbacks_container">

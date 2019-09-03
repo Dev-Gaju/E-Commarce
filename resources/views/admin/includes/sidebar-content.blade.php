@@ -32,9 +32,6 @@
                 </a>
 
             </li>
-
-
-
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-edit"></i> <span>Category Info</span>
@@ -43,11 +40,12 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{url('/category/add-category')}}"><i class="fa fa-circle-o"></i>Add Category </a></li>
-                    <li><a href="{{url('/category/manage-category')}}"><i class="fa fa-circle-o"></i>Manage Category </a></li>
+                    <li><a href="{{url('/categori/add-categori')}}"><i class="fa fa-circle-o"></i>Add Category</a></li>
+                    <li><a href="{{url('/categori/manage-categori')}}"><i class="fa fa-circle-o"></i>Manage Category </a></li>
 
                 </ul>
             </li>
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-edit"></i> <span>Brand Info</span>
@@ -74,6 +72,15 @@
                     <li><a href="{{url('/product/manage-product')}}"><i class="fa fa-circle-o"></i>Manage Product </a></li>
 
                 </ul>
+            </li>
+
+            <li>
+                <a href="{{url('/manage-order')}}">
+                    <i class="fa fa-edit"></i>   <span>Order Info</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
             </li>
         </ul>
 

@@ -14,7 +14,7 @@
             <br/>
             <div class="col-md-12 register">
                 <br/><br/>
-                <form  action="{{url('/new-shipping')}}" method="POST">
+                <form  action="{{url('/new-order')}}" method="POST">
                     @csrf
 
                     <div class="register-top-grid">
@@ -23,15 +23,15 @@
                             <table class="table table-bordered">
                                 <tr>
                                     <th>Cash On Delivery</th>
-                                    <th><input type="radio" name="cash_on_delivery"></th>
+                                    <td><input type="radio" name="payment_type" value="Cash On Delivery"></td>
                                 </tr>
                                 <tr>
                                     <th>Bkash</th>
-                                    <th><input type="radio" name="cash_on_delivery"></th>
+                                    <td><input type="radio" name="payment_type" value="Bkash"></td>
                                 </tr>
                                 <tr>
                                     <th>Paypal</th>
-                                    <th><input type="radio" name="cash_on_delivery"></th>
+                                    <td><input type="radio" name="payment_type" value="Paypal"></td>
                                 </tr>
 
                             </table>

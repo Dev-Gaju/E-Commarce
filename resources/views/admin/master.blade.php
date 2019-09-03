@@ -1,5 +1,6 @@
 <html>
 @include('admin.includes.head-link');
+
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 

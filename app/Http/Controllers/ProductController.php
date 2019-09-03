@@ -9,7 +9,7 @@ use App\SubImage;
 use Illuminate\Http\Request;
 use Image;
 use DB;
-
+use Illuminate\Support\Facades\File;
 class ProductController extends Controller
 {
   public function addProdct(){
@@ -26,10 +26,10 @@ class ProductController extends Controller
       $productImage=$request->file('main_image');
       $imagename=$productImage->getClientOriginalName();
       $directory=('product-Image/');
-//      $productImage->move($directory,$imagename);
-     $imageUrl=$directory.$imagename;
+       $imageUrl=$directory.$imagename;
       Image::make($productImage)->save($imageUrl);
 //       return $imageUrl;
+       //      $productImage->move($directory,$imagename);
 
 
 
@@ -95,10 +95,63 @@ return redirect('/product/add-product')->with('message','Save Product Info Suces
         $updateInfo->product_quantity=$request->product_quantity;
         $updateInfo->short_description=$request->short_description;
         $updateInfo->long_description=$request->long_description;
-        $updateInfo->main_image=$request->main_image;
         $updateInfo->publication_status=$request->publication_status;
+
+        if ($request->hasFile('main_image')){
+            $image_path = public_path().'/'.$updateInfo->main_image;
+            if(File::exists($image_path)){
+                unlink($image_path);
+            }
+            $productImage=$request->file('main_image');
+            $imagename=$productImage->getClientOriginalName();
+            $directory=('product-Image/');
+            $imageUrl=$directory.$imagename;
+            Image::make($productImage)->save($imageUrl);
+            $updateInfo->main_image=$imageUrl;
+        }
+
+//   delete proccess for updating Image
+//        $image = explode(",", $updateInfo->sub_image);
+//        foreach ($image as $images) {
+//            Storage::delete("uploaded-images/{$image}");
+//        }
+
         $updateInfo->update();
         return redirect('/product/manage-product')->with('message','Updated Info Successfully');
 
+    }
+    public function viewProductInfo(){
+      return view('admin.product.view-info');
+    }
+    public function publishedProduct($id){
+      $publication_status=Product::find($id);
+        $publication_status->publication_status=1;
+        $publication_status->save();
+        return redirect('/product/manage-product')->with('message','Published Successfully');
+
+
+    }
+    public function unpublishedProduct ($id){
+        $publication_status=Product::find($id);
+        $publication_status->publication_status=0;
+        $publication_status->save();
+        return redirect('/product/manage-product')->with('message','Unpublished Successfully');
+
+    }
+    public function deleteProduct($id){
+      $product=Product::find($id);
+        $image_path = public_path().'/'.$product->main_image;
+        unlink($image_path);
+        $product->delete();
+
+        $subImages=SubImage::where('product_id','=',$product->id)->get();
+        foreach ($subImages as $subImage) {
+            $image_path =public_path().'/'.$subImage->sub_image;
+            unlink($image_path);
+            $subImage->delete();
+        }
+
+
+        return redirect('/product/manage-product')->with('message','Delete Successfully');
     }
 }

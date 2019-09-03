@@ -34,6 +34,7 @@
                             <form action="{{url('/add-to-cart')}}" method="POST">
                                 @csrf
                                 <input type="number" name="qty" value="1" min="1" />
+                                <input type="hidden" name="product_id" value="{{$product->id}}">
                                 <input type="submit" value="Add to Cart" title="click for Bye"/>
                             </form>
                         </div>

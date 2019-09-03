@@ -58,8 +58,8 @@
                     <input type="submit" value="">
                 </div>
                 <ul class="bag">
-                    <a href="{{url('/add-to-cart')}}"><i class="bag_left"> </i></a>
-                    <a href="#"><li class="bag_right"><p>205.00 $</p> </li></a>
+                    <a href="{{url('/show-cart')}}"><i class="bag_left"> </i></a>
+                    <a href="#"><li class="bag_right"><p>TK.{{Session::get('grantTotal')}}</p> </li></a>
                     <div class="clearfix"> </div>
                 </ul>
             </div>

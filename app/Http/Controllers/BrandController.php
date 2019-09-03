@@ -42,4 +42,18 @@ class BrandController extends Controller
         $deleteBrand->delete();
         return redirect('brand/manage-brand')->with('message','Deleted Info Carefully');
  }
+ public function unpublishedBrand($id){
+        $brandStatus=Brand::find($id);
+     $brandStatus->publication_status=0;
+     $brandStatus->save();
+     return redirect('brand/manage-brand')->with('message','Deleted Info Carefully');
+
+
+ }
+ public function publishedBrand($id){
+     $brandStatus=Brand::find($id);
+     $brandStatus->publication_status=1;
+     $brandStatus->save();
+     return redirect('brand/manage-brand')->with('message','Deleted Info Carefully');
+ }
 }

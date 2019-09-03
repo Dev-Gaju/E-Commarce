@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function  addCategory(){
+    public function  AddCategory(){
         return view('admin.category.add-category');
     }
     public function addNewCategory(Request $request){
@@ -19,10 +19,10 @@ class CategoryController extends Controller
         $category->publication_status =$request->publication_status;
         $category->save();
 
-        return redirect('/category/add-category')->with('message','Save Category Info Successfully');
+        return redirect('/categori/add-categori')->with('message','Save Category Info Successfully');
 
     }
-    public function manageCategory(){
+    public function ManageCategory(){
         $manageCategory=Category::orderBy('id','desc')->get();
         return view('admin.category.manage-category',['manageCategory'=>$manageCategory]);
     }
@@ -38,13 +38,28 @@ class CategoryController extends Controller
         $UpdateById->publication_status=$request->publication_status;
         $UpdateById->update();
 
-        return redirect('/category/manage-category')->with('message','Category Info Update Successfully');
+        return redirect('/categori/manage-categori')->with('message','Category Info Update Successfully');
 
     }
     public function deleteCategory($data){
         $deleteById=Category::find($data);
         $deleteById->delete();
-        return redirect('/category/manage-category')->with('message','Delete Info Successfully');
+        return redirect('/categori/manage-categori')->with('message','Delete Info Successfully');
+
+    }
+    public function unpublishedCategory($id){
+        $publication_status=Category::find($id);
+        $publication_status->publication_status=0;
+        $publication_status->save();
+        return redirect('/categori/manage-categori')->with('message','Unpublished Info Successfully');
+
+
+    }
+    public function publishedCategory($id){
+        $publication_status=Category::find($id);
+        $publication_status->publication_status=1;
+        $publication_status->save();
+        return redirect('/categori/manage-categori')->with('message','Published Info Successfully');
 
     }
 }

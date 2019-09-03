@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Order;
+use App\Orderdetail;
+use App\Payment;
 use App\shipping;
+use Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Mail;
@@ -87,10 +91,50 @@ class checkoutController extends Controller
        $shipping->address=$request->address;
        $shipping->save();
 
-       Session::put('shippingId',$shipping->Id);
+       Session::put('shippingId',$shipping->id);
        return redirect('/payment-info');
    }
    public function showpaymentForm(){
        return view('front.checkout.payment-form');
+   }
+   public function saveOrderInfo(Request $request){
+          $paymenType=$request->payment_type;
+         if ($paymenType=='Cash On Delivery')
+         {
+            $order=new Order();
+             $order->customer_id=Session::get('customerID');
+             $order->shipping_id=Session::get('shippingId');
+             $order->order_total=Session::get('grantTotal');
+             $order->save();
+
+                         $payment=new Payment();
+                         $payment->order_id=$order->id;
+                         $payment->payment_type=$paymenType;
+                         $payment->save();
+
+                  $cartProducts=Cart::content();
+                  foreach ($cartProducts as $cartProduct){
+                      $orderDetails=new Orderdetail();
+                      $orderDetails->order_id=$order->id;
+                      $orderDetails->product_id=$cartProduct->id;
+                      $orderDetails->product_name=$cartProduct->name;
+                      $orderDetails->product_price=$cartProduct->price;
+                      $orderDetails->product_quantity=$cartProduct->qty;
+                      $orderDetails->save();
+               }
+                  Cart::destroy();
+                  return redirect('/')->with('message','Thanks For Your Order. We will contact with you soon');
+
+
+
+         }else if($paymenType=='Bkash')
+         {
+
+
+         }else if($paymenType=='Paypal'){
+
+
+         }
+
    }
 }

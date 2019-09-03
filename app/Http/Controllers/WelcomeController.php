@@ -11,12 +11,14 @@ class WelcomeController extends Controller
 {
     public function index(){
         $productInfo=Product::where('publication_status',1)->get();
+//        return $productInfo;
         return view('front.home.home-content',['productInfo'=>$productInfo]);
 
     }
 
     public function category($id){
-        $products=Product::where('catrgory_id',$id)->get();
+        $products=Product::where('catrgory_id', $id /**AND 'publication_status',1**/)
+            ->where('publication_status',1)->get();
 
         return view('front.category.category-content', ['products'=>$products]);
 
@@ -56,7 +58,6 @@ class WelcomeController extends Controller
     }
     public function blog(){
         return view('front.blog.blog-content');
-
     }
     public function blogs_single(){
         return view('front.blog.blog_single.blog-single-content');

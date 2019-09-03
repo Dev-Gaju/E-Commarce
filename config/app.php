@@ -167,6 +167,7 @@ return [
          */
         Intervention\Image\ImageServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -228,6 +229,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 
