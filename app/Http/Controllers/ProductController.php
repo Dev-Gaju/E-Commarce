@@ -138,8 +138,9 @@ return redirect('/product/add-product')->with('message','Save Product Info Suces
         return redirect('/product/manage-product')->with('message','Unpublished Successfully');
 
     }
-    public function deleteProduct($id){
-      $product=Product::find($id);
+    public function deleteProduct(Request $request){
+      $product=Product::find($request->product_id);
+
         $image_path = public_path().'/'.$product->main_image;
         unlink($image_path);
         $product->delete();

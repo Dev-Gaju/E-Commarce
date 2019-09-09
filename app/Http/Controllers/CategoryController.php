@@ -26,12 +26,13 @@ class CategoryController extends Controller
         $manageCategory=Category::orderBy('id','desc')->get();
         return view('admin.category.manage-category',['manageCategory'=>$manageCategory]);
     }
-    public function editCategory($data){
-        $categoryInfo=Category::find($data);
-        return view('admin.category.edit-category',['categoryInfo'=>$categoryInfo]);
+
+    public function editCategory($id){
+        $category_info=Category::find($id);
+        return view('admin.category.edited-category',['category_info'=>$category_info]);
     }
 
-    public function Updateategory(Request $request){
+    public function UpdatCeategory(Request $request){
         $UpdateById=Category::find($request->category_id);
         $UpdateById->category_name=$request->category_name;
         $UpdateById->category_description=$request->category_description;
@@ -41,8 +42,8 @@ class CategoryController extends Controller
         return redirect('/categori/manage-categori')->with('message','Category Info Update Successfully');
 
     }
-    public function deleteCategory($data){
-        $deleteById=Category::find($data);
+    public function deleteCategory(Request $request){
+        $deleteById=Category::find($request->category_id);
         $deleteById->delete();
         return redirect('/categori/manage-categori')->with('message','Delete Info Successfully');
 

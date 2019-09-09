@@ -58,12 +58,9 @@
                                 <a href="{{url('/product/edit-product/'.$product->id)}}" class="btn btn-outline-primary btn-xs" title="Edit Info" >
                                     <span class="glyphicon glyphicon-edit"></span>
                                 </a>
-                                <a href="{{url('/product/delete-product/'.$product->id)}}" class="btn btn-danger btn-xs"  title="Delete Info" >
+                                <a  data-target="#myModal" data-whatever="{{$product->id}}"  data-toggle="modal" class="btn btn-danger btn-xs"  title="Delete Info" >
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </a>
-
-
-
                             </td>
                         @endforeach
                             </tbody>
@@ -119,37 +116,80 @@
 
 
                                 </table>
-                                    {{--<div class="form-group">--}}
-                                        {{--<span>Product Name:</span>--}}
-                                        {{--<label  for="recipient-name" class="control-label"></label>--}}
+                                    <div class="form-group">
+                                        <span>Product Name:</span>
+                                        <label  for="recipient-name" class="control-label"></label>
 
-                                    {{--</div>--}}
+                                    </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                        </td>
+                                    </tr>
+                                </table>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <script>
-                    $('#exampleModal').on('show.bs.modal', function (event) {
-                        var button = $(event.relatedTarget) // Button that triggered the modal
-                        var recipient = button.data('whatever') // Extract info from data-* attributes
-                        var modal = $(this)
-                        // modal.find('#exampleModalLabel').text(recipient.category_name)
-                        //modal.find('#exampleModalLabel').text(recipient.category_name)
-                        //modal.find('.modal-body input').val(recipient.category_name)
-                        modal.find('#p_id').text(recipient.id)
-                        modal.find('#p_name').text(recipient.product_name)
-                        modal.find('#b_name').text(recipient.brand_name)
-                        modal.find('#c_name').text(recipient.category_name)
-                        modal.find('#p_quan').text(recipient.product_quantity)
-                        modal.find('#p_sdes').text(recipient.short_description)
-                        modal.find('#p_ldes').text(recipient.long_description)
-                        $('#my_Image').attr('src','../'+recipient.main_image);
 
+                < <link rel="stylesheet" href="{{asset('/admin')}}/css/style.css.php">
+
+                <!-- Modal HTML -->
+                <div id="myModal" class="modal fade">
+                    <div class="modal-dialog modal-confirm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="icon-box">
+                                    <i class="material-icons"><span class="glyphicon glyphicon-remove"></span></i>
+                                </div>
+                                <h4 class="modal-title">Are you sure?</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <form id="modal_form"  method="post" action="{{url('/product/delete-product')}}">
+                                {{csrf_field()}}
+                                <div class="modal-body">
+                                    <p>Do you really want to delete these records? This process cannot be undone.</p>
+
+                                    <input type="text"  style="display: none"  id="delete_id" name="product_id" value="" >
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                    <input type="submit"  class="btn btn-danger" value="Delete" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <script>
+
+
+                    $('#myModal').on('show.bs.modal',function (event){
+                        var button=$(event.relatedTarget)
+                        var recipient=button.data('whatever')
+                        var modal = $(this)
+                        modal.find('.modal-body  #delete_id').val(recipient)
 
                     })
+                    $('#exampleModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget) // Button that triggered the modal
+                var recipient = button.data('whatever') // Extract info from data-* attributes
+                var modal = $(this)
+                // modal.find('#exampleModalLabel').text(recipient.category_name)
+                //modal.find('#exampleModalLabel').text(recipient.category_name)
+                //modal.find('.modal-body input').val(recipient.category_name)
+                modal.find('#p_id').text(recipient.id)
+                modal.find('#p_name').text(recipient.product_name)
+                modal.find('#b_name').text(recipient.brand_name)
+                modal.find('#c_name').text(recipient.category_name)
+                modal.find('#p_quan').text(recipient.product_quantity)
+                modal.find('#p_sdes').text(recipient.short_description)
+                modal.find('#p_ldes').text(recipient.long_description)
+                $('#my_Image').attr('src','../'+recipient.main_image);
+
+
+                })
                 </script>
 
 @endsection

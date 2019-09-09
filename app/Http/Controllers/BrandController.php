@@ -37,11 +37,15 @@ class BrandController extends Controller
      $brandupdate->update();
      return redirect('/brand/manage-brand')->with('message','Brand Info updated');
  }
- public function deleteBrand($data){
-        $deleteBrand=Brand::find($data);
-        $deleteBrand->delete();
-        return redirect('brand/manage-brand')->with('message','Deleted Info Carefully');
+ public function deleteBrand(Request $request)
+ {
+     $deleteBrand=Brand::find($request->brand_id);
+    $deleteBrand->delete();
+    return redirect('/brand/manage-brand');
+
+
  }
+
  public function unpublishedBrand($id){
         $brandStatus=Brand::find($id);
      $brandStatus->publication_status=0;

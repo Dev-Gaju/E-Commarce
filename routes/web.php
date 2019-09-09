@@ -37,8 +37,8 @@ Route::get('/categori/add-categori', 'CategoryController@AddCategory');
 Route::post('/category/add-newCategory', 'CategoryController@addNewCategory');
 Route::get('/categori/manage-categori', 'CategoryController@ManageCategory')->middleware('AuthenicateMiddileware');
 Route::get('/category/edit-category/{id}','CategoryController@editCategory');
-Route::post('/category/updateCategory','CategoryController@Updateategory');
-Route::get('/category/deleteCategory/{id}','CategoryController@deleteCategory');
+Route::post('/category/updateCategory','CategoryController@UpdatCeategory');
+Route::post('/category/delete-Category','CategoryController@deleteCategory');
 Route::get('/category/unpublished-category/{id}','CategoryController@unpublishedCategory');
 Route::get('/category/published-category/{id}','CategoryController@publishedCategory');
 
@@ -50,7 +50,7 @@ Route::post('/brand/new-brand','BrandController@addNewBrand');
 Route::get('/brand/manage-brand','BrandController@manageBrand')->middleware('AuthenicateMiddileware');
 Route::get('/brand/edit-brand/{id}','BrandController@EditBrand');
 Route::post('/brand/updateBrand','BrandController@updateBrand');
-Route::get('/brand/delete-brand/{id}','BrandController@deleteBrand');
+Route::post('/brand/delete-brand','BrandController@deleteBrand')->name('brand/delete-brand');
 Route::get('/brand/unpublished-brand/{id}','BrandController@unpublishedBrand');
 Route::get('/brand/published-brand/{id}','BrandController@publishedBrand');
 
@@ -63,7 +63,7 @@ Route::get('/product/edit-product/{id}','ProductController@editProductInfo');
 Route::post('/product/update-product','ProductController@updateProductInfo');
 Route::get('/product/published-product/{id}','ProductController@publishedProduct');
 Route::get('/product/unpublished-product/{id}','ProductController@unpublishedProduct');
-Route::get('/product/delete-product/{id}','ProductController@deleteProduct');
+Route::post('/product/delete-product','ProductController@deleteProduct');
 
 
 
