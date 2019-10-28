@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Notifications\ResetPasswordNotification;
 use App\Order;
 use App\Orderdetail;
 use App\Payment;
@@ -66,7 +67,7 @@ class checkoutController extends Controller
    public function customerLogout(){
        Session::forget('customerID');
        Session::forget('customername');
-      return redirect('/');
+       return redirect('/');
    }
    public function loginCustomer(Request $request){
        $customer=Customer::where('email',$request->email)->first();
@@ -81,6 +82,9 @@ class checkoutController extends Controller
      }else{
          return redirect('/checkout')->with('message','Please Enter Your Correct Email');
      }
+   }
+   public function sendPasswordResetNotification($token){
+        $this->notify(new ResetPasswordNotification($token));
    }
 
    public function saveShipping(Request $request){

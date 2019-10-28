@@ -168,6 +168,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Monospice\LaravelRedisSentinel\RedisSentinelServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -230,6 +231,9 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Activation' => Cartalyst\Sentinel\Laravel\Facades\Activation::class,
+        'Reminder'   => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
+        'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
 
     ],
 

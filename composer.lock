@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ad52341b291a9eeabc96160c4ec732f",
+    "content-hash": "4b7e2c7bb3f656ae7604dbfb211d2ec7",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -61,6 +61,143 @@
                 "pdf"
             ],
             "time": "2019-02-26T18:07:43+00:00"
+        },
+        {
+            "name": "cartalyst/sentinel",
+            "version": "v2.0.18",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cartalyst/sentinel.git",
+                "reference": "d1e5d6c2afab33134c70eac1962aed769ddc3077"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cartalyst/sentinel/zipball/d1e5d6c2afab33134c70eac1962aed769ddc3077",
+                "reference": "d1e5d6c2afab33134c70eac1962aed769ddc3077",
+                "shasum": ""
+            },
+            "require": {
+                "cartalyst/support": "~1.0||~2.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "illuminate/cookie": "~5.0",
+                "illuminate/database": "~5.0",
+                "illuminate/events": "~5.0",
+                "illuminate/http": "~5.0",
+                "illuminate/session": "~5.0",
+                "ircmaxell/password-compat": "~1.0",
+                "mockery/mockery": "~0.9",
+                "paragonie/random_compat": "^1.4||^2",
+                "phpunit/phpunit": "^4.0||^5.0"
+            },
+            "suggest": {
+                "illuminate/database": "By default, Sentinel utilizes the powerful Illuminate database layer.",
+                "illuminate/events": "To hook into various events across Sentinel, we recommend using Illuminate's event dispatcher.",
+                "ircmaxell/password-compat": "Default hashing uses PHP 5.5 password_* functions, with forward-compatible support.",
+                "symfony/http-foundation": "Required for native implementations."
+            },
+            "type": "library",
+            "extra": {
+                "component": "package",
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Cartalyst\\Sentinel\\Laravel\\SentinelServiceProvider"
+                    ],
+                    "aliases": {
+                        "Activation": "Cartalyst\\Sentinel\\Laravel\\Facades\\Activation",
+                        "Reminder": "Cartalyst\\Sentinel\\Laravel\\Facades\\Reminder",
+                        "Sentinel": "Cartalyst\\Sentinel\\Laravel\\Facades\\Sentinel"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cartalyst\\Sentinel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Cartalyst LLC",
+                    "email": "help@cartalyst.com",
+                    "homepage": "https://cartalyst.com"
+                }
+            ],
+            "description": "PHP 5.4+ Fully-featured Authentication & Authorization System",
+            "keywords": [
+                "auth",
+                "cartalyst",
+                "codeigniter",
+                "fuelphp",
+                "laravel",
+                "php",
+                "security"
+            ],
+            "time": "2019-08-14T20:03:48+00:00"
+        },
+        {
+            "name": "cartalyst/support",
+            "version": "v2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cartalyst/support.git",
+                "reference": "9d836aa009270217a6b62ec56d9a5e650947b83b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cartalyst/support/zipball/9d836aa009270217a6b62ec56d9a5e650947b83b",
+                "reference": "9d836aa009270217a6b62ec56d9a5e650947b83b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "illuminate/mail": "~5.0",
+                "illuminate/validation": "~5.0",
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "^5.7",
+                "symfony/translation": "~3.2"
+            },
+            "type": "library",
+            "extra": {
+                "component": "package",
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cartalyst\\Support\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Cartalyst LLC",
+                    "email": "help@cartalyst.com",
+                    "homepage": "https://cartalyst.com"
+                }
+            ],
+            "description": "Support helpers.",
+            "keywords": [
+                "cartalyst",
+                "helper",
+                "laravel",
+                "support"
+            ],
+            "time": "2019-03-02T12:25:09+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1162,6 +1299,156 @@
             "time": "2018-11-05T09:00:11+00:00"
         },
         {
+            "name": "monospice/laravel-redis-sentinel-drivers",
+            "version": "2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/monospice/laravel-redis-sentinel-drivers.git",
+                "reference": "76e3cf56cdf006fe106242344d137131e3c0b2f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/monospice/laravel-redis-sentinel-drivers/zipball/76e3cf56cdf006fe106242344d137131e3c0b2f3",
+                "reference": "76e3cf56cdf006fe106242344d137131e3c0b2f3",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": "^5.4",
+                "illuminate/contracts": "^5.4",
+                "illuminate/queue": "^5.4",
+                "illuminate/redis": "^5.4",
+                "illuminate/session": "^5.4",
+                "illuminate/support": "^5.4",
+                "monospice/spicy-identifiers": "^0.1",
+                "php": ">=5.6.4",
+                "predis/predis": "^1.1"
+            },
+            "require-dev": {
+                "laravel/framework": "^5.4",
+                "laravel/horizon": "^1.0",
+                "laravel/lumen-framework": "^5.4",
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Monospice\\LaravelRedisSentinel\\RedisSentinelServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Monospice\\LaravelRedisSentinel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cy Rossignol",
+                    "email": "cy@rossignols.me"
+                }
+            ],
+            "description": "Redis Sentinel integration for Laravel and Lumen.",
+            "keywords": [
+                "laravel",
+                "lumen",
+                "redis",
+                "sentinel"
+            ],
+            "time": "2018-09-20T06:56:16+00:00"
+        },
+        {
+            "name": "monospice/spicy-identifier-tools",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/monospice/spicy-identifier-tools.git",
+                "reference": "8659493c64d3023c38bf4f325bff86fbb53c085a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/monospice/spicy-identifier-tools/zipball/8659493c64d3023c38bf4f325bff86fbb53c085a",
+                "reference": "8659493c64d3023c38bf4f325bff86fbb53c085a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.2",
+                "phpunit/phpunit": "~4.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Monospice\\SpicyIdentifiers\\Tools\\": "src/Tools"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cy Rossignol",
+                    "email": "cy.rossignol@yahoo.com"
+                }
+            ],
+            "description": "An easy way to parse, convert, and format identifier names.",
+            "time": "2015-11-04T19:00:37+00:00"
+        },
+        {
+            "name": "monospice/spicy-identifiers",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/monospice/spicy-identifiers.git",
+                "reference": "ecd04ca84907f2f0d58bf3b2bb9a36d7d29d86bd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/monospice/spicy-identifiers/zipball/ecd04ca84907f2f0d58bf3b2bb9a36d7d29d86bd",
+                "reference": "ecd04ca84907f2f0d58bf3b2bb9a36d7d29d86bd",
+                "shasum": ""
+            },
+            "require": {
+                "monospice/spicy-identifier-tools": "~1.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Monospice\\SpicyIdentifiers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cy Rossignol",
+                    "email": "cy@rossignols.me"
+                }
+            ],
+            "description": "An easy way to parse and manipulate identifier names, such as dynamic method names.",
+            "keywords": [
+                "dynamic",
+                "method",
+                "parser",
+                "variable"
+            ],
+            "time": "2017-01-29T09:00:23+00:00"
+        },
+        {
             "name": "nesbot/carbon",
             "version": "2.21.3",
             "source": {
@@ -1511,6 +1798,56 @@
                 "type"
             ],
             "time": "2015-07-25T16:39:46+00:00"
+        },
+        {
+            "name": "predis/predis",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nrk/predis.git",
+                "reference": "f0210e38881631afeafb56ab43405a92cafd9fd1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nrk/predis/zipball/f0210e38881631afeafb56ab43405a92cafd9fd1",
+                "reference": "f0210e38881631afeafb56ab43405a92cafd9fd1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "suggest": {
+                "ext-curl": "Allows access to Webdis when paired with phpiredis",
+                "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Predis\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniele Alessandri",
+                    "email": "suppakilla@gmail.com",
+                    "homepage": "http://clorophilla.net"
+                }
+            ],
+            "description": "Flexible and feature-complete Redis client for PHP and HHVM",
+            "homepage": "http://github.com/nrk/predis",
+            "keywords": [
+                "nosql",
+                "predis",
+                "redis"
+            ],
+            "time": "2016-06-16T16:22:20+00:00"
         },
         {
             "name": "psr/container",

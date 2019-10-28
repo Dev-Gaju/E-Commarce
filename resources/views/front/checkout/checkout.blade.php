@@ -25,6 +25,9 @@
                         <div>
                             <input type="submit" value="Login" class="btn btn-success btn-block col-sm-offset-6">
                         </div>
+                        <div>
+                            <a  href="#" class="col-sm-offset-8" >Forgot Password</a>
+                        </div>
                         <div class="clearfix"> </div>
                     </div>
                 </form>

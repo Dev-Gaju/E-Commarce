@@ -25,12 +25,12 @@
                     <li><a href="{{url('/wishlist')}}">Wishlist</a></li>
                     @if(Session('customerID'))
                         <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout').submit();">logout</a></li>
-                        <form method="post" id="logout" action="{{route('logout')}}" >
+                        <form method="post" id="logout" action="{{url('/logouts')}}" >
                             @csrf
                         </form>
                         @else
-                        <li><a href="{{url('/login')}}">Log In</a></li>
-                        <li><a href="{{url('/register')}}">Sign Up</a></li>
+                        <li><a href="{{url('/checkout')}}">Log In</a></li>
+                        <li><a href="{{url('/checkout')}}">Sign Up</a></li>
                         @endif
 
                 </ul>

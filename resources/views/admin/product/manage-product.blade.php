@@ -2,6 +2,8 @@
 @section('main-content')
 
     <section class="content" >
+
+
         <div class="row col-sm-offset-2">
             <div class="col-xs-12">
                 <div class="box">
@@ -10,7 +12,19 @@
                         @if($message=Session::get('message'))
                             <h3 class="text-success text-center">{{$message}}</h3>
                             @endif
-                    </div>
+                         </div>
+                      {{-- @if(count($data) > 0) --}}
+                           <select id="catID">
+                                  <option>All Category</option>
+                                  @foreach($categories as $category)
+                           <option value="{{$category->id}}">{{$category->category_name}}</option>
+                            @endforeach
+                           </select>
+                           {{-- @else --}}
+
+
+
+
                     <!-- /.box-header -->
                     <div class="box-body">
                         <table id="example2" class="table table-bordered table-hover">
@@ -29,9 +43,11 @@
                                 <th> Action</th>
                             </tr>
                             </thead>
-                            @foreach($productInfo as $product)
-                            <tbody>
 
+                            <tbody id="productData">
+                            @foreach($productInfo as $product)
+
+                         <tr>
                             <td>{{$product->id}}</td>
                             <td>{{$product->product_name}}</td>
                             <td>{{$product->category_name}}</td>
@@ -40,7 +56,7 @@
                             <td>{{$product->product_quantity}}</td>
                             <td>{{$product->short_description}}</td>
                             <td >{{$product->long_description}}</td>
-                            <td><img src="{{asset($product->main_image)}}" height="40" width="40"></td>
+                            <td><img src="{{asset($product->main_image)}}" class="media-object img-circle" border-radius="50%" height="40" width="40"></td>
                             <td>{{$product->publication_status==1? 'Published': 'Unpublished'}}</td>
                             <td>
                                 <a  class="btn btn-dark btn-xs" data-toggle="modal" data-target="#exampleModal" data-whatever="{{json_encode($product)}}" title="view product Info" >
@@ -62,10 +78,13 @@
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </a>
                             </td>
+                         </tr>
                         @endforeach
-                            </tbody>
+                    </tbody>
 
+                             {{-- @endif --}}
                         </table>
+                        {{$productInfo->links()}}
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -165,6 +184,10 @@
                 <script>
 
 
+
+
+
+
                     $('#myModal').on('show.bs.modal',function (event){
                         var button=$(event.relatedTarget)
                         var recipient=button.data('whatever')
@@ -191,5 +214,22 @@
 
                 })
                 </script>
+<script>
+        $(document).ready(function(){
+          $("#catID").change(function(){
+            // console.log('gggggg')
+             var id=$(this).val();
+            $.ajax({
+              type: 'get',
+              dataType : 'html',
+              url: 'productsCat',
+              data: {id:id},
+              success:function(response){ //console.log(response)
+                $('#productData').html(response);
 
+              }
+            });
+          });
+        });
+        </script>
 @endsection

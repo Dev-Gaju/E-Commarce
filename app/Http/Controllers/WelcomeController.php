@@ -26,10 +26,8 @@ class WelcomeController extends Controller
     public function register(){
         return view('front.register.register-content');
 
-    } public function login(){
-        return view('front.login.login-content');
-
     }
+
     public function wishlist(){
         return view('front.wishlist.wishlist-content');
 
