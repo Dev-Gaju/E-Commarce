@@ -174,7 +174,7 @@ class ProductController extends Controller
         return redirect('/product/manage-product')->with('message', 'Delete Successfully');
     }
 
-    public function search(Request $request)
+    public function GroupBY(Request $request)
     {
 
         $cat_id = $request->id;
@@ -194,7 +194,7 @@ class ProductController extends Controller
                 <td>$product->product_quantity</td>
                <td>$product->short_description</td>
                <td >$product->long_description</td>
-              <td></td>
+               <td><img src=../$product->main_image  style=height:50px width:50px></td>
               <td></td>
               <td></td>
                 </tr>";

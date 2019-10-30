@@ -218,12 +218,12 @@
         $(document).ready(function(){
           $("#catID").change(function(){
             // console.log('gggggg')
-             var id=$(this).val();
+             var cat_id=$(this).val();
             $.ajax({
               type: 'get',
               dataType : 'html',
               url: 'productsCat',
-              data: {id:id},
+              data: {id:cat_id},
               success:function(response){ //console.log(response)
                 $('#productData').html(response);
 

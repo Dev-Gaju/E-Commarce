@@ -69,7 +69,7 @@ Route::post('/product/update-product', 'ProductController@updateProductInfo');
 Route::get('/product/published-product/{id}', 'ProductController@publishedProduct');
 Route::get('/product/unpublished-product/{id}', 'ProductController@unpublishedProduct');
 Route::post('/product/delete-product', 'ProductController@deleteProduct');
-Route::get('product/productsCat', 'ProductController@search');
+Route::get('product/productsCat', 'ProductController@GroupBY');
 
 
 
